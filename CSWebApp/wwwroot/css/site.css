@@ -1,6 +1,9 @@
 ﻿body {
+    background-color: black;
     padding-top: 50px;
     padding-bottom: 20px;
+    font-family: Consolas;
+    color: #C0C0C0;
 }
 
 /* Wrapping element */
@@ -9,16 +12,9 @@
     padding-left: 15px;
     padding-right: 15px;
 }
-
-/* Carousel */
-.carousel-caption p {
-    font-size: 20px;
-    line-height: 1.4;
-}
-
-/* Make .svg files in the carousel display properly in older browsers */
-.carousel-inner .item img[src$=".svg"] {
-    width: 100%;
+.col-centered {
+    float: none;
+    margin: 0 auto;
 }
 
 /* QR code generator */
