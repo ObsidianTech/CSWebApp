@@ -26,4 +26,10 @@
     <ProjectReference Include="..\CSLibrary\CSLibrary.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="wwwroot\Stems\" />
+    <Folder Include="wwwroot\WAVs\" />
+    <Folder Include="wwwroot\Tracks\" />
+  </ItemGroup>
+
 </Project>

@@ -5,19 +5,18 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using CSLibrary.Models;
+using Microsoft.AspNetCore.Hosting;
 
 namespace CSWebApp.Controllers
 {
     public class HomeController : Controller
     {
         public v1 _v1 { get; set; }
-        public ApplicationDbContext _context { get; set; }
         public HomeViewModel HVM { get; set; }
 
-        public HomeController(ApplicationDbContext context)
+        public HomeController(ApplicationDbContext context, IHostingEnvironment env)
         {
-            _context = context;
-            _v1 = new v1(_context);
+            _v1 = new v1(context, env);
             HVM = new HomeViewModel();
 
         }

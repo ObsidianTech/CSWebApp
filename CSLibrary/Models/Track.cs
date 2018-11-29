@@ -6,7 +6,7 @@ namespace CSLibrary.Models
     {
         public int ID { get; set; }
         public string TrackName { get; set; }
-        public byte[] TrackFile { get; set; }
+        public string TrackFile { get; set; }
         public int Price { get; set; }
         public DateTime DateOfUpload { get; set; }
         public bool isMP3 { get; set; }

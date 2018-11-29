@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using CSLibrary.Managers;
 using CSLibrary.Models;
 using CSLibrary.Models.DTOs;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
@@ -17,13 +19,15 @@ namespace CSWebApp.Controllers
     public class v1 : Controller
     {
         public ApplicationDbContext _context { get; set; }
-        public JsonSerializer _serializer { get; set; }
+        public TrackManager _trackManager { get; set; }
+        public IHostingEnvironment _env { get; set; }
 
 
-        public v1(ApplicationDbContext context)
+        public v1(ApplicationDbContext context, IHostingEnvironment env)
         {
             _context = context;
-            _serializer = new JsonSerializer();
+            _env = env;
+            _trackManager = new TrackManager(_context, _env);
         }
 
         [HttpGet]
@@ -34,15 +38,10 @@ namespace CSWebApp.Controllers
 
         [HttpPost]
         [Route("UploadTrack")]
-        public async Task<TrackUploadResponseDTO> UploadTrack(IFormFile Track)
+        public async Task<string> UploadTrack(IFormFile Track)
         {
-            var response = new TrackUploadResponseDTO()
-            {
-                name = Track.FileName,
-                size = Track.Length,
-                url = 
-            };
-            return response;
+            
+            return JsonConvert.SerializeObject( await _trackManager.AddNewTrack(Track));
         }
     }
 }
