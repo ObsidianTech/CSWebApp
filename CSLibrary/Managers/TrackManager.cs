@@ -40,9 +40,9 @@ namespace CSLibrary.Managers
             await _context.SaveChangesAsync();
             var response = new TrackUploadResponseDTO()
             {
-                //name = Track.FileName,
-                //size = Track.Length,
-                //url = 
+                name = track.FileName,
+                size = track.Length,
+                url = "/wwwroot/Tracks/" + filename + "/" + filename
             };
             return response;
         }
