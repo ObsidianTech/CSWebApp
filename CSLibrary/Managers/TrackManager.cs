@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -45,6 +46,12 @@ namespace CSLibrary.Managers
                 url = "/wwwroot/Tracks/" + filename + "/" + filename
             };
             return response;
+        }
+
+        public List<Track> GetTrackPool()
+        {
+            List<Track> TrackPool = _context.Tracks.ToList();
+            return TrackPool;
         }
     }
 }

@@ -47,7 +47,8 @@ namespace CSWebApp.Controllers
 
         public IActionResult Admin()
         {
-            return View();
+            HVM.TrackPool = _v1.GetTrackPool();
+            return View(HVM);
         }
     }
 }

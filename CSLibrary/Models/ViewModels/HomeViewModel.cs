@@ -1,9 +1,10 @@
-﻿namespace CSWebApp.Controllers
+﻿using CSLibrary.Models;
+using System.Collections.Generic;
+
+namespace CSLibrary.Models
 {
     public class HomeViewModel
     {
-        public HomeViewModel()
-        {
-        }
+        public List<Track> TrackPool;
     }
 }

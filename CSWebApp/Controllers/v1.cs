@@ -39,5 +39,20 @@ namespace CSWebApp.Controllers
         [HttpPost]
         [Route("UploadTrack")]
         public async Task<string> UploadTrack(IFormFile Track) => JsonConvert.SerializeObject(await _trackManager.AddNewTrack(Track));
+
+        [HttpGet]
+        [Route("GetTrackPool")]
+        public List<Track> GetTrackPool()
+        {
+            return _trackManager.GetTrackPool();
+        }
+
+        [HttpPost]
+        [Route("UploadTrackFromWeb")]
+        public async Task<IActionResult> UploadTrackFromWeb(IFormFile Track)
+        {
+            JsonConvert.SerializeObject(await _trackManager.AddNewTrack(Track));
+            return RedirectToAction("Admin", "Home");
+        }
     }
 }
