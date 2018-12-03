@@ -59,9 +59,17 @@ namespace CSLibrary.Migrations
 
                     b.Property<int>("Price");
 
+                    b.Property<int?>("ProjectAssignedID");
+
                     b.Property<string>("TrackFile");
 
                     b.Property<string>("TrackName");
+
+                    b.Property<int>("TrackNumber");
+
+                    b.Property<string>("URL");
+
+                    b.Property<bool>("inProject");
 
                     b.Property<bool>("isMP3");
 
@@ -71,7 +79,16 @@ namespace CSLibrary.Migrations
 
                     b.HasKey("ID");
 
+                    b.HasIndex("ProjectAssignedID");
+
                     b.ToTable("Tracks");
+                });
+
+            modelBuilder.Entity("CSLibrary.Models.Track", b =>
+                {
+                    b.HasOne("CSLibrary.Models.Project", "ProjectAssigned")
+                        .WithMany()
+                        .HasForeignKey("ProjectAssignedID");
                 });
 #pragma warning restore 612, 618
         }

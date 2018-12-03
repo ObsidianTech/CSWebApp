@@ -42,7 +42,7 @@ namespace CSLibrary.Managers
             var response = new TrackUploadResponseDTO()
             {
                 name = track.FileName,
-                size = track.Length,
+                TrackID = newTrack.ID,
                 url = "/wwwroot/Tracks/" + filename + "/" + filename
             };
             return response;

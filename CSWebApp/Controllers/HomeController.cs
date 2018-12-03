@@ -50,5 +50,11 @@ namespace CSWebApp.Controllers
             HVM.TrackPool = _v1.GetTrackPool();
             return View(HVM);
         }
+
+        public IActionResult TrackInfo(int id)
+        {
+            ViewBag.TrackID = id;
+            return View();
+        }
     }
 }

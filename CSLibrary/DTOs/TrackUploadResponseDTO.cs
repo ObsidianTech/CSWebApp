@@ -7,7 +7,7 @@ namespace CSLibrary.Models.DTOs
     public class TrackUploadResponseDTO
     {
         public string name { get; set; }
-        public double size { get; set; }
+        public int TrackID { get; set; }
         public string url { get; set; }
         public string thumbnailurl { get; set; }
         public string deleteurl { get; set; }
