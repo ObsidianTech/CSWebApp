@@ -6,5 +6,6 @@ namespace CSLibrary.Models
     public class HomeViewModel
     {
         public List<Track> TrackPool;
+        public List<Project> Projects;
     }
 }

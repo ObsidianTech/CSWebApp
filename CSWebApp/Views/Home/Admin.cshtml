@@ -114,7 +114,6 @@
     </div>
 </div>
 <!--File Upload-->
-
 <!--Track Pool-->
 <div class="container">
     <div class="row">
@@ -124,7 +123,7 @@
                 <p>This is the pool of all of the unallocated tracks that are currently uploaded.</p>
                 @if (Model.TrackPool.Count == 0)
                 {
-                    <p>Your tack pool is currently empty. Either you don't have any tracks uploaded, or they are all currently assigned to a project.</p>
+                    <p>Your track pool is currently empty. Either you don't have any tracks uploaded, or they are all currently assigned to a project.</p>
                 }
                 else
                 {
@@ -133,7 +132,14 @@
                         @foreach (var track in Model.TrackPool)
                         {
                             <tr style="border: 1px solid pink; height: 10em;">
-                                <td>@track.TrackFile</td>
+                                @if (track.TrackName == null)
+                                {
+                                    <td>@track.TrackFile</td>
+                                }
+                                else
+                                {
+                                    <td>@track.TrackName</td>
+                                }
                             </tr>
                         }
                     </table>
@@ -143,7 +149,22 @@
     </div>
 </div>
 <!--Track Pool-->
-
+<!--Projects-->
+<div class="container">
+    <div class="row">
+        <div class="col-md-5 col-centered">
+            <div align="center" style="padding: 2em; margin: 20px;">
+                <h1>Projects</h1>
+                <p>Projects created so far are listed here.</p>
+                @if (Model.Projects.Count == 0)
+                {
+                    <p>You have not created any projects yet.</p>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+<!--Projects-->
 <!--Upload Scripts-->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js" integrity="sha384-xBuQ/xzmlsLoJpyjoggmTEz8OWUFM0/RC5BsqQBDX2v5cMvDHcMakNTNrHIW2I5f" crossorigin="anonymous"></script>
 <!-- The jQuery UI widget factory, can be omitted if jQuery UI is already included -->

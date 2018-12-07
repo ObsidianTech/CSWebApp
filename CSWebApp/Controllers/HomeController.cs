@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using CSLibrary.Models;
 using Microsoft.AspNetCore.Hosting;
+using CSLibrary.Models.DTOs;
 
 namespace CSWebApp.Controllers
 {
@@ -48,13 +49,24 @@ namespace CSWebApp.Controllers
         public IActionResult Admin()
         {
             HVM.TrackPool = _v1.GetTrackPool();
+            HVM.Projects = _v1.GetProjects();
             return View(HVM);
         }
 
+        public IActionResult TrackInfo(TrackUploadResponseDTO trackUpload)
+        {
+            int id = trackUpload.TrackID;
+            ViewBag.TrackID = id;
+            return View();
+        }
+
+        [ActionName("TrackInfoById")]
         public IActionResult TrackInfo(int id)
         {
             ViewBag.TrackID = id;
             return View();
         }
+
+
     }
 }

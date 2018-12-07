@@ -53,5 +53,18 @@ namespace CSLibrary.Managers
             List<Track> TrackPool = _context.Tracks.ToList();
             return TrackPool;
         }
+
+        public void UpdateTrackInfo(string trackName, string price, int trackID)
+        {
+            Track track = new Track()
+            {
+                ID = trackID
+            };
+            _context.Tracks.Attach(track);
+            track.TrackName = trackName;
+            track.Price = int.Parse(price);
+            _context.Update(track);
+            _context.SaveChanges();
+        }
     }
 }

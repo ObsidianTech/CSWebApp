@@ -21,13 +21,14 @@ namespace CSWebApp.Controllers
         public ApplicationDbContext _context { get; set; }
         public TrackManager _trackManager { get; set; }
         public IHostingEnvironment _env { get; set; }
-
+        public ProjectManager _projectManager { get; set; }
 
         public v1(ApplicationDbContext context, IHostingEnvironment env)
         {
             _context = context;
             _env = env;
             _trackManager = new TrackManager(_context, _env);
+            _projectManager = new ProjectManager(_context, _env);
         }
 
         [HttpGet]
@@ -52,14 +53,17 @@ namespace CSWebApp.Controllers
         public async Task<IActionResult> UploadTrackFromWeb(IFormFile Track)
         {
             var response = await _trackManager.AddNewTrack(Track);
-            return RedirectToAction("TrackInfo", "Home", response.TrackID);
+            return RedirectToAction("TrackInfo", "Home", response);
         }
 
         [HttpPost]
         [Route("TrackInfoFromWeb")]
         public IActionResult TrackInfoFromWeb(string TrackName, string Price, int TrackID)
         {
+            _trackManager.UpdateTrackInfo(TrackName, Price, TrackID);
             return RedirectToAction("Admin", "Home");
         }
+
+        public List<Project> GetProjects() => _projectManager.GetProjects();
     }
 }
