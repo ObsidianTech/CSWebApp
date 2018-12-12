@@ -1,0 +1,49 @@
+﻿@model CSLibrary.Models.HomeViewModel
+
+<!--Project-->
+<div class="container">
+    <div class="row">
+        <div class="col-md-5 col-centered" style="border:dotted 2px white;">
+            <div align="center" style="padding: 2em; margin: 20px; border:dotted 2px white;">
+                <h1>@Model.ProjectToEdit.ProjectName</h1>
+                <img src="~/Projects/@Model.ProjectToEdit.Picture/@Model.ProjectToEdit.Picture" style="height: 250px;"/>
+            </div>
+        </div>
+    </div>
+</div>
+<!--Project-->
+
+<!--Track Pool-->
+<div class="container">
+    <div class="row">
+        <div class="col-md-5 col-centered">
+            <div align="center" style="padding: 2em; margin: 20px;">
+                <h1>Track Pool</h1>
+                <p>Select the tracks from the pool that you wish to add to this project.</p>
+                @if (Model.TrackPool.Count == 0)
+                {
+                    <p>Your track pool is currently empty. Either you don't have any tracks uploaded, or they are all currently assigned to a project.</p>
+                }
+                else
+                {
+                    <table style="width:65%">
+                        @foreach (var track in Model.TrackPool)
+                        {
+                            <tr style="border-bottom: 1px solid lightgrey; height: 2em;">
+                                @if (track.TrackName == null)
+                                {
+                                    <td>@track.TrackFile</td>
+                                }
+                                else
+                                {
+                                    <td>@track.TrackName</td>
+                                }
+                            </tr>
+                        }
+                    </table>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+<!--Track Pool-->

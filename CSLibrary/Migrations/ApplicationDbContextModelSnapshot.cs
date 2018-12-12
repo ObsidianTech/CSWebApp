@@ -45,6 +45,14 @@ namespace CSLibrary.Migrations
                     b.Property<int>("ID")
                         .ValueGeneratedOnAdd();
 
+                    b.Property<byte[]>("ConvertedPicture");
+
+                    b.Property<string>("Picture");
+
+                    b.Property<string>("ProjectName");
+
+                    b.Property<int>("ProjectType");
+
                     b.HasKey("ID");
 
                     b.ToTable("Projects");
@@ -87,7 +95,7 @@ namespace CSLibrary.Migrations
             modelBuilder.Entity("CSLibrary.Models.Track", b =>
                 {
                     b.HasOne("CSLibrary.Models.Project", "ProjectAssigned")
-                        .WithMany()
+                        .WithMany("TrackList")
                         .HasForeignKey("ProjectAssignedID");
                 });
 #pragma warning restore 612, 618

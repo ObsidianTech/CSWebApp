@@ -50,7 +50,7 @@ namespace CSLibrary.Managers
 
         public List<Track> GetTrackPool()
         {
-            List<Track> TrackPool = _context.Tracks.ToList();
+            List<Track> TrackPool = _context.Tracks.Where(t => t.inProject == false).ToList();
             return TrackPool;
         }
 
@@ -64,7 +64,7 @@ namespace CSLibrary.Managers
             track.TrackName = trackName;
             track.Price = int.Parse(price);
             _context.Update(track);
-            _context.SaveChanges();
+            _context.SaveChanges(); 
         }
     }
 }

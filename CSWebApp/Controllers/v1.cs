@@ -65,5 +65,19 @@ namespace CSWebApp.Controllers
         }
 
         public List<Project> GetProjects() => _projectManager.GetProjects();
+
+        [HttpPost]
+        [Route("CreateProject")]
+        public async Task<IActionResult> CreateProjectAsync(string Name, ProjectType ProjectType, IFormFile Picture)
+        {
+            var response = await _projectManager.CreateNewProjectAsync(Name, ProjectType, Picture);
+            return RedirectToAction("Admin", "Home");
+        }
+
+        [HttpGet]
+        public Project GetProject(int ID)
+        {
+            return _projectManager.GetProjects(ID);
+        }
     }
 }

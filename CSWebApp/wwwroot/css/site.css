@@ -29,3 +29,26 @@
         display: none;
     }
 }
+
+.flex-container {
+    display: flex;
+    border: solid 3px lightgrey;
+}
+
+.ProjectListItem {
+    vertical-align: top;
+    display: inline-block;
+    text-align: center;
+    width: 120px;
+    height: 120px;
+}
+
+.ProjectListImage {
+    width: 100px;
+    height: 100px;
+    background-color: grey;
+}
+
+.caption {
+    display: block;
+}

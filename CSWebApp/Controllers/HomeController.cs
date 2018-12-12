@@ -67,6 +67,17 @@ namespace CSWebApp.Controllers
             return View();
         }
 
+        public IActionResult CreateProject()
+        {
+            var project = new Project();
+            return View(project);
+        }
 
+        public IActionResult EditProject(int ID)
+        {
+            HVM.ProjectToEdit = _v1.GetProject(ID);
+            HVM.TrackPool = _v1.GetTrackPool();
+            return View(HVM);
+        }
     }
 }

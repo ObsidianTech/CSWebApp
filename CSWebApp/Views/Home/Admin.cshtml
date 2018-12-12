@@ -127,11 +127,10 @@
                 }
                 else
                 {
-
                     <table style="width:65%">
                         @foreach (var track in Model.TrackPool)
                         {
-                            <tr style="border: 1px solid pink; height: 10em;">
+                            <tr style="border-bottom: 1px solid lightgrey; height: 2em;">
                                 @if (track.TrackName == null)
                                 {
                                     <td>@track.TrackFile</td>
@@ -149,6 +148,7 @@
     </div>
 </div>
 <!--Track Pool-->
+
 <!--Projects-->
 <div class="container">
     <div class="row">
@@ -160,11 +160,26 @@
                 {
                     <p>You have not created any projects yet.</p>
                 }
+                else
+                {
+                    <p>Click on a project to edit it.</p>
+                    <div class="flex-container">
+                        @foreach (var project in Model.Projects)
+                        {
+                            <div class="ProjectListItem">
+                                <a href="/Home/EditProject/@project.ID"><img class="ProjectListImage" src="~/Projects/@project.Picture/@project.Picture" /></a>
+                                <span class="caption">@project.ProjectName</span>
+                            </div>
+                        }
+                    </div>
+                }
             </div>
+            <a asp-controller="Home" asp-action="CreateProject"><button><span class="glyphicon-plus"></span></button></a>
         </div>
     </div>
 </div>
 <!--Projects-->
+
 <!--Upload Scripts-->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js" integrity="sha384-xBuQ/xzmlsLoJpyjoggmTEz8OWUFM0/RC5BsqQBDX2v5cMvDHcMakNTNrHIW2I5f" crossorigin="anonymous"></script>
 <!-- The jQuery UI widget factory, can be omitted if jQuery UI is already included -->

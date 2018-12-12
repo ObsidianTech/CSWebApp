@@ -27,6 +27,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="wwwroot\Projects\" />
     <Folder Include="wwwroot\Stems\" />
     <Folder Include="wwwroot\WAVs\" />
     <Folder Include="wwwroot\Tracks\" />
