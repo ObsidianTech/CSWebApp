@@ -52,3 +52,30 @@
 .caption {
     display: block;
 }
+
+#nav {
+    background-color: black;
+    color: white;
+    /*position: fixed;*/
+}
+
+/*.ProjectContainer {
+}*/
+
+.parallaxBackground {
+    /* The image used */
+    /*background-image: url("img_parallax.jpg");*/
+    background-color: green;
+    /* Set a specific height */
+    height: 500px;
+    /* Create the parallax scrolling effect */
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+/*The parallax effect works properly, but I was given the impression that background for the 
+    Project Container could be blurred so that when it came over the parallax background it would blur it. 
+    Not sure how to make this work, but one option would be to just have the Project Container background already 
+    be the blurred parallax background, and getting rid of the of the parallax/tweaking it. */
